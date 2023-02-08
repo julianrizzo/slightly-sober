@@ -11,7 +11,7 @@ namespace slightly_sober.Models
         public int UserID { get; set; }
 
         [Required, StringLength(30)]
-        public string UserName { get; set; }
+        public string Username { get; set; }
 
         [Required, StringLength(30)]
         [RegularExpression(@"^[A-Z][a-z ]*$", ErrorMessage = "First name must start with a capital letter, maximum 30 characters")]
@@ -34,9 +34,9 @@ namespace slightly_sober.Models
         public virtual Login Login { get; set; }
 
         [SetsRequiredMembers]
-        public User(string userName, string firstName, string lastName, string email, bool isAdmin)
+        public User(string username, string firstName, string lastName, string email, bool isAdmin)
         {
-            UserName = userName;
+            Username = username;
             FirstName = firstName;
             LastName = lastName;
             Email = email;
@@ -44,9 +44,9 @@ namespace slightly_sober.Models
         }
 
         [SetsRequiredMembers]
-        public User(string userName, string firstName, string lastName, string email, bool isAdmin, Login login)
+        public User(string username, string firstName, string lastName, string email, bool isAdmin, Login login)
         {
-            UserName = userName;
+            Username = username;
             FirstName = firstName;
             LastName = lastName;
             Email = email;
