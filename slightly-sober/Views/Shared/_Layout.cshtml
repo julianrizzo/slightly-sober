@@ -25,6 +25,7 @@
 
                         @{
                             var isLoggedIn = Context.Session.GetInt32("UserID").HasValue;
+                            var isAdmin = Context.Session.GetInt32("IsAdmin").HasValue;
                         }
                         @if (isLoggedIn)
                         {
@@ -33,6 +34,13 @@
                                     Welcome, @Context.Session.GetString("Username")
                                 </span>
                             </li>
+                            @if (isAdmin)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Console">Admin Console</a>
+                                </li>
+                            }
+
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
                             </li>

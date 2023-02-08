@@ -46,6 +46,11 @@ namespace slightly_sober.Controllers
             HttpContext.Session.SetInt32("UserID", selectedUser.UserID);
             HttpContext.Session.SetString("Username", selectedUser.Username);
 
+            if (selectedUser.IsAdmin)
+            {
+                HttpContext.Session.SetString("IsAdmin", selectedUser.IsAdmin.ToString());
+            }
+
             return RedirectToAction("Index", "Home");
         }
 
@@ -81,7 +86,7 @@ namespace slightly_sober.Controllers
             _context.Users.Add(newUser);
             _context.SaveChanges();
 
-            HttpContext.Session.SetInt32("LoginID", newUser.UserID);
+            HttpContext.Session.SetInt32("UserID", newUser.UserID);
             HttpContext.Session.SetString("Username", newUser.Username);
 
             return RedirectToAction("Index", "Home");
