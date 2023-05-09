@@ -10,6 +10,7 @@ namespace slightly_sober.Data
         // Properties - Tables
         public DbSet<User> Users { get; set; }
         public DbSet<Login> Logins { get; set; }
+        public DbSet<Cocktail> Cocktails { get; set; }
     }
 
 }

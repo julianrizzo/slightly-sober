@@ -1,0 +1,62 @@
+﻿@model IEnumerable<slightly_sober.Models.Cocktail>
+
+@{
+    ViewData["Title"] = "Cocktails";
+}
+
+<h1>Admin Console</h1>
+<h3>All Cocktails</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Cocktail Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Main Liquer
+            </th>
+            <th>
+                Ingredients
+            </th>
+            <th>
+                Author
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MainLiquer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ingredients)
+                </td>
+                <td>
+                    <a asp-action="DeleteCocktail" asp-route-id="@item.CocktailID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.ValidationMessage("AdminError", new { @class = "text-danger" })

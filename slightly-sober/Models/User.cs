@@ -33,6 +33,8 @@ namespace slightly_sober.Models
         public int LoginID { get; set; }
         public virtual Login Login { get; set; }
 
+        public virtual List<Cocktail>? Cocktails { get; set; } = null;
+
         [SetsRequiredMembers]
         public User(string username, string firstName, string lastName, string email, bool isAdmin)
         {

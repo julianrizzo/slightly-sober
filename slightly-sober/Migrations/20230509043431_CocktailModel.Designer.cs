@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using slightly_sober.Data;
 
@@ -10,9 +11,11 @@ using slightly_sober.Data;
 namespace slightlysober.Migrations
 {
     [DbContext(typeof(SlightlySoberContext))]
-    partial class SlightlySoberContextModelSnapshot : ModelSnapshot
+    [Migration("20230509043431_CocktailModel")]
+    partial class CocktailModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

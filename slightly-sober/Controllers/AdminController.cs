@@ -26,6 +26,13 @@ namespace slightly_sober.Controllers
             return View(userList);
         }
 
+        public IActionResult Cocktails()
+        {
+            List<Cocktail> cocktailList = _context.Cocktails.ToList();
+
+            return View(cocktailList);
+        }
+
         [Route("Admin/DisableUser/{userID}")]
         public async Task<IActionResult> DisableUser(int userID, bool status)
         {
@@ -54,6 +61,14 @@ namespace slightly_sober.Controllers
             return View(selectedUser);
         }
 
+        [HttpGet]
+        [Route("Admin/DeleteCocktail/{cocktailID}")]
+        public IActionResult DeleteCocktail(int cocktailID)
+        {
+            var selectedCocktail = _context.Cocktails.Where(x => x.CocktailID == cocktailID).FirstOrDefault();
+            return View(selectedCocktail);
+        }
+
 
         [HttpPost]
         public IActionResult DeleteUserConfirmed(int userID)
@@ -66,6 +81,17 @@ namespace slightly_sober.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Users");
+        }
+
+        [HttpPost]
+        public IActionResult DeleteCocktailConfirmed(int cocktailID)
+        {
+            var selectedCocktail = _context.Cocktails.Where(x => x.CocktailID == cocktailID).FirstOrDefault();
+
+            _context.Cocktails.Remove(selectedCocktail);
+            _context.SaveChanges();
+
+            return RedirectToAction("Cocktails");
         }
     }
 }

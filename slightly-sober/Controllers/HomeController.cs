@@ -19,10 +19,10 @@ namespace slightly_sober.Controllers
 
         public IActionResult Index()
         {
-            User me = _context.Users.Where(x => x.Username == "admin").FirstOrDefault();
+/*            User me = _context.Users.Where(x => x.Username == "admin").FirstOrDefault();
             HttpContext.Session.SetInt32("UserID", me.UserID);
             HttpContext.Session.SetString("Username", me.Username);
-            HttpContext.Session.SetString("IsAdmin", me.IsAdmin.ToString());
+            HttpContext.Session.SetString("IsAdmin", me.IsAdmin.ToString());*/
             return View();
         }
 

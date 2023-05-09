@@ -20,6 +20,9 @@ namespace slightly_sober.Data
                 // Add and save
                 context.Users.AddRange(defaultUser);
                 context.SaveChanges();
+                Cocktail demoCocktail = new("Margarita", "A little mess of fun.", "Coupe", "Tequila", "Some other stuff.", defaultUser.UserID);
+                context.Cocktails.AddRange(demoCocktail);
+                context.SaveChanges();
             }
         }
 
